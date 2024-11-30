@@ -1,0 +1,32 @@
+﻿@model ClothesShop.Models.Product
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Details</title>
+</head>
+<body>
+    <h1>@Model.Name</h1>
+    <p><strong>Description:</strong> @Model.Description</p>
+    <p><strong>Price:</strong> @($"{Model.Price:F2} ₴")</p>
+
+    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+    {
+        <img src="@Model.ImageUrl" alt="@Model.Name" style="max-width:300px;" />
+    }
+
+    <hr />
+    @section reviews {
+        <h2>User Reviews</h2>
+        <form method="post" action="/Product/AddReview">
+            <label for="userName">Your Name:</label>
+            <input type="text" id="userName" name="userName" required />
+            <br />
+            <label for="reviewText">Your Review:</label>
+            <textarea id="reviewText" name="reviewText" required></textarea>
+            <br />
+            <button type="submit">Submit Review</button>
+        </form>
+    }
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/Product/Details/1">Product Details</a>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    @if (IsSectionDefined("reviews"))
+    {
+        <section>
+            @RenderSection("reviews", required: false)
+        </section>
+    }
+
+    <footer>
+        <p>&copy; 2024 Y'S</p>
+    </footer>
+</body>
+</html>
